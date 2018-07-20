@@ -54,7 +54,7 @@ jobs:
           key: "{{ .Environment.CACHE_VERSION }}-build-cache"
           paths: "_build"
 
-  test:
+  build:
     docker:
       - image: elixir:1.6.6
       - image: localstack/localstack
@@ -79,6 +79,6 @@ workflows:
       - build_dependencies:
            requires:
              - checkout_code
-      - test:
+      - build:
            requires:
              - build_dependencies
