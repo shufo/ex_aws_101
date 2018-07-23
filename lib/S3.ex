@@ -1,4 +1,5 @@
 defmodule ExAws101.S3 do
+  
   def put_object(bucket, path, contents) do
     ExAws.S3.put_object(bucket, path, contents)
     |> ExAws.request()
