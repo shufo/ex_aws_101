@@ -1,11 +1,6 @@
 defmodule ExAws101.S3 do
   def put_object(bucket, path, contents) do
-    request = ExAws.S3.put_object(bucket, path, contents)
-
-    case ExAws.request(request) do
-      {:ok, _} -> {:ok, "put object"}
-      _ -> {:error, nil}
-    end
+    ExAws.S3.put_object(bucket, path, contents) |> ExAws.request()
   end
 
   def put_object!(bucket, path, contents) do
@@ -21,24 +16,11 @@ defmodule ExAws101.S3 do
   end
 
   def delete_object(bucket, path) do
-    request = ExAws.S3.delete_object(bucket, path)
-
-    case ExAws.request(request) do
-      {:ok, _} -> {:ok, "deleted object"}
-      _ -> {:error, nil}
-    end
+    ExAws.S3.delete_object(bucket, path) |> ExAws.request()
   end
 
   def put_object_acl(bucket, path, acl) do
-    request = ExAws.S3.put_object_acl(bucket, path, acl)
-
-    case ExAws.request(request) do
-      {:ok, _} ->
-        {:ok, "changed object"}
-
-      _ ->
-        {:error, nil}
-    end
+    ExAws.S3.put_object_acl(bucket, path, acl) |> ExAws.request()
   end
 
   def put_bucket(bucket, region) do
